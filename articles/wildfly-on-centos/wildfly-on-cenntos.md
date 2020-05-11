@@ -9,7 +9,7 @@ ms.date: 05/11/2020
 
 # Quickstart: WildFly on CentOS
 
-This quickstart shows you how to Deploy a standalone node of WildFly 18.0.1.Final on top of CentOS 8.0 VM. It also deploys Java Sample Application named JBoss-EAP on Azure on Wildfly. This is ideal for development and testing of enterprise Java applications on Azure. 
+This quickstart shows you how to deploy a standalone node of WildFly 18.0.1.Final on top of CentOS 8.0 VM. It also deploys Java Sample Application named JBoss-EAP on Azure on Wildfly. This is ideal for development and testing of enterprise Java applications on Azure. 
 
 ## Prerequisites
 
