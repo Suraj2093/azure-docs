@@ -9,7 +9,7 @@ ms.date: 05/11/2020
 
 # Quickstart: WildFly on CentOS
 
-This quickstart shows you how to deploy WildFly on top of CentOS VM. This is ideal for development and testing of enterprise Java applications on Azure. 
+This quickstart shows you how to deploy WildFly on top of CentOS VM. This is ideal for development and testing of enterprise Java applications on Azure.
 
 ## Prerequisites
 
@@ -18,7 +18,9 @@ This quickstart shows you how to deploy WildFly on top of CentOS VM. This is ide
 
 ## Use case
 
+WildFly is ideal for development and testing of enterprise Java applications on Azure. List of technologies available in WildFly 18 server configuration profiles is listed in the table in https://docs.wildfly.org/18/Getting_Started_Guide.html#getting-started-with-wildfly.
 
+You can also use WildFly in Standalone mode and in Cluster mode as per your use case. You can ensure high availability of critical Jakarta EE applications by WildFly on a cluster of nodes, making a small number of application configuration changes, and then deploying the application in the cluster. To learn more on this please check https://docs.wildfly.org/18/High_Availability_Guide.html
 
 ## Configuration choice
 
