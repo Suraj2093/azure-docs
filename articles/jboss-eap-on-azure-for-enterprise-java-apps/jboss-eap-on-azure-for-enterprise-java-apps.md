@@ -1,6 +1,6 @@
 ---
 title: Quickstart - JBoss EAP on Azure for enterprise Java apps
-description: Deploy JBoss EAP on Azure on Red Hat Enterprise Linux for enterprise Java apps
+description: Deploy JBoss EAP on Azure on Red Hat Enterprise Linux  VM for enterprise Java apps
 author: SpektraSystems
 ms.author: karler
 ms.topic: quickstart
@@ -9,28 +9,55 @@ ms.date: 05/11/2020
 
 # Quickstart: JBoss EAP on Azure for enterprise Java apps
 
-This quickstart shows you how to deploy JBoss EAP on top of Red Hat Enterprise Linux. It also deploys Java Sample Application on EAP.
-
-JBoss EAP (Enterprise Application Platform) is an open source platform for highly transactional, web-scale Java applications. EAP combines the familiar and popular Jakarta EE specifications with the latest technologies, like Microprofile, to modernize your applications from traditional Java EE into the new world of DevOps, cloud, containers, and microservices. EAP includes everything needed to build, run, deploy, and manage enterprise Java applications in a variety of environments, including on-premise, virtual environments, and in private, public, and hybrid clouds. To learn more about the JBoss Enterprise Application Platform, visit:
-https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/
-
-Red Hat Subscription Management (RHSM) is a customer-driven, end-to-end solution that provides tools for subscription status and management and integrates with Red Hat's system management tools. To obtain an rhsm account for JBoss EAP, go to: www.redhat.com.
+This quickstart shows you how to deploy JBoss EAP on top of Red Hat Enterprise Linux. JBoss EAP (Enterprise Application Platform) is an open source platform for highly transactional, web-scale Java applications. EAP includes everything needed to build, run, deploy, and manage enterprise Java applications in a variety of environments, including on-premise, virtual environments, and in private, public, and hybrid clouds.
 
 ## Prerequisites
 
-* Azure Subscription with the specified payment method (RHEL 7.7/8.0 is an [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=partners%3Blinux&page=1&search=Red%20Hat%20Enterprise%20Linux) product and requires a payment method to be specified in the Azure Subscription). If you have a RHEL OS license of your own and wish to use that, then you can also deploy a RHEL VM of BYOS license type.
-* To create the CentOS VM, you will need:
-
-    - **Admin Username** and password/ssh key data which is an SSH RSA public key for your RHEL VM.
-
-    - **EAP Username** and password to enable the EAP Admin Console and Deployment method.
+* Azure Subscription with the specified payment method (RHEL 7.7/8.0 is an [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=partners%3Blinux&page=1&search=Red%20Hat%20Enterprise%20Linux) product and requires a payment method to be specified in the Azure Subscription). Note that you will not be able to deploy Red Hat Enterprise Linux in MSDN subscription.
+* To install JBoss EAP, you need to have an Red Hat Account and your Red Hat Subscription Management (RHSM) account needs EAP entitlement to use the Enterprise Application Platform. Set up an account on the [Red Hat Customer Portal](https://access.redhat.com/). You can get an evaluation account for EAP from [here](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation).
+* Review the [JBoss EAP 7 supported configurations](https://access.redhat.com/articles/2026253) and ensure your system is supportable.
+* Ensure that your system is up to date with Red Hat issued updates and errata.
+* Register the Red Hat Enterprise Linux server using Red Hat Subscription Manager if you have used the byos image available on Azure.
     
 ## Use case
 
+Red Hat JBoss Enterprise Application Platform (JBoss EAP) 7.2 is a certified implementation of the Java Enterprise Edition (Java EE) 8 specification. JBoss EAP provides preconfigured options for features such as high-availability clustering, messaging, and distributed caching. It also enables users to write, deploy, and run applications using the various APIs and services that JBoss EAP provides. Check the features of JBoss EAP [here](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html-single/introduction_to_jboss_eap/index#about_eap).
+
+JBoss EAP 7.2 can used to develop the following Applications:
+
+* Web Services Applications - Web services provide a standard means of interoperating among different software applications. Each application can run on a variety of platforms and frameworks. Web services facilitate internal, heterogeneous subsystem communication. To know more about Developing Web Services Applications click [here](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/developing_web_services_applications/index).
+
+* EJB Applications - Enterprise JavaBeans (EJB) 3.2 is an API for developing distributed, transactional, secure and portable Java EE applications through the use of server-side components called Enterprise Beans. Enterprise Beans implement the business logic of an application in a decoupled manner that encourages reuse. To know more about Developing EJB Applications click [here](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/developing_ejb_applications/index).
+
+* Hibernate Applications - Developers and administrators can develop and deploy JPA/Hibernate applications with Red Hat JBoss Enterprise Application Platform. Hibernate Core is an object-relational mapping framework for the Java language. It provides a framework for mapping an object-oriented domain model to a relational database, allowing applications to avoid direct interaction with the database. Hibernate EntityManager implements the programming interfaces and lifecycle rules as defined by the [Java Persistence 2.1 specification](https://www.jcp.org/en/jsr/detail?id=338). Together with Hibernate Annotations, this wrapper implements a complete (and standalone) JPA persistence solution on top of the mature Hibernate Core. To know more about Developing JPA/Hibernate Applications click [here](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/developing_hibernate_applications/index).
 
 ## Configuration choice
 
-For deployment of RHEL VM you can either choose the VM from the Azure Marketplace or if you have a RHEL OS license of your own and wish to use that, then you can also deploy a RHEL VM of BYOS license type and use your license to register for RHEL OS.
+For deployment of RHEL VM you can either choose the VM image from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) which is basically a PAYG image or if you have a RHEL OS license of your own and wish to use that, then you can also deploy a RHEL VM of BYOS license type and use your license to register for RHEL OS.
+
+In addition to providing functionality and APIs to its applications, JBoss EAP has powerful management capabilities. These management capabilities differ depending on which operating mode is used to start JBoss EAP. JBoss EAP is supported on Red Hat Enterprise Linux, Windows Server, and Oracle Solaris. JBoss EAP offers a standalone server operating mode for managing discrete instances and a managed domain operating mode for managing groups of instances from a single control point. You can declare an evironment variable named EAP_HOME which is used to denote the path to the JBoss EAP installation. 
+
+- **Start JBoss EAP as a Standalone Server** - Following is the command to start EAP service in Standalone Mode.
+
+    `$EAP_HOME/bin/standalone.sh`
+    
+    This startup script uses the EAP_HOME/bin/standalone.conf file, to set some default preferences, such as JVM options. You can customize the settings in this file. JBoss EAP uses the standalone.xml configuration file to start on Standalone mode by default, but can be started using a different one. For details on the available standalone configuration files and how to use them, see the [Standalone Server Configuration Files](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) section. To start JBoss EAP with a different configuration, use the --server-config argument. For example:
+    
+    `$EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml`
+    
+    For a complete listing of all available startup script arguments and their purposes, use the --help argument or see the [Server Runtime Arguments](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/reference_material#reference_of_switches_and_arguments_to_pass_at_server_runtime) section.
+    
+- **Start JBoss EAP in a Managed Domain** - The domain controller must be started before the servers in any of the server groups in the domain. Use the following script to first start the domain controller, and then for each associated host controller.
+
+    `$EAP_HOME/bin/domain.sh`
+    
+    This startup script uses the EAP_HOME/bin/domain.conf file, to set some default preferences, such as JVM options. You can customize the settings in this file. JBoss EAP uses the host.xml host configuration file to start on managed domain by default, but can be started using a different one. For details on the available managed domain configuration files and how to use them, see the [Managed Domain Configuration Files](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#managed_domain_configuration_files) section. To start JBoss EAP with a different configuration, use the --host-config argument. For example:
+    
+    `$EAP_HOME/bin/domain.sh --host-config=host-master.xml`
+    
+    When setting up a managed domain, additional arguments will need to be passed into the startup script. For a complete listing of all available startup script arguments and their purposes, use the --help argument or see the [Server Runtime Arguments](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/reference_material#reference_of_switches_and_arguments_to_pass_at_server_runtime) section.
+    
+JBoss EAP can also work in Cluster, please check [JBoss EAP Clustering](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuring_messaging/clusters_overview) to know more.
 
 ## Support and subscription notes
 
