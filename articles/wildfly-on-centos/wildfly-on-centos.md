@@ -81,7 +81,7 @@ Downloading WildFly and using it is pretty simple. You can simply download the c
     * wildfly-18.0.1.Final.zip
     * wildfly-18.0.1.Final.tar.gz
     
-Once you finsih the setup can you start the Standalone service by running the standalone.sh or standalone.bat launch scripts.
+Once you finish the setup can you start the Standalone service by running the standalone.sh or standalone.bat launch scripts.
 
 ## ARM template
 
