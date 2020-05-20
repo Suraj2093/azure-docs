@@ -35,7 +35,7 @@ JBoss EAP 7.2 can used to develop the following Applications:
 
 For deployment of RHEL VM you can either choose the VM image from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) which is basically a PAYG image or if you have a RHEL OS license of your own and wish to use that, then you can also deploy a RHEL VM of BYOS license type and use your license to register for RHEL OS.
 
-In addition to providing functionality and APIs to its applications, JBoss EAP has powerful management capabilities. These management capabilities differ depending on which operating mode is used to start JBoss EAP. JBoss EAP is supported on Red Hat Enterprise Linux, Windows Server, and Oracle Solaris. JBoss EAP offers a standalone server operating mode for managing discrete instances and a managed domain operating mode for managing groups of instances from a single control point. You can declare an evironment variable named EAP_HOME which is used to denote the path to the JBoss EAP installation. 
+In addition to providing functionality and APIs to its applications, JBoss EAP has powerful management capabilities. These management capabilities differ depending on which operating mode is used to start JBoss EAP. JBoss EAP is supported on Red Hat Enterprise Linux, Windows Server, and Oracle Solaris. JBoss EAP offers a standalone server operating mode for managing discrete instances and a managed domain operating mode for managing groups of instances from a single control point. You can declare an environment variable named *EAP_HOME* which is used to denote the path to the JBoss EAP installation. 
 
 - **Start JBoss EAP as a Standalone Server** - Following is the command to start EAP service in Standalone Mode.
 
@@ -63,7 +63,7 @@ JBoss EAP can also work in Cluster, please check [JBoss EAP Clustering](https://
 
 If you do not have RHEL OS license of you own, you will have to use RHEL PAYG (Pay-As-You-Go) marketplace image for deployment. RHEL Pay-As-You-Go image carries a separate hourly charge that is in addition to Microsoft's Linux VM rates. In this case the VM will be licensed automatically after the instance is launched for the first time and total price of the VM consists of the base Linux VM price plus RHEL VM image surcharge. See [Red Hat Enterprise Linux pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/red-hat/) for details. You also need to have a Red Hat account to register to Red Hat Subscription Manager (RHSM) and install JBoss EAP.
 
-If you have a RHEL OS license and wish to deploy the VM using BYOS (Bring-Your-Own-Subscription) plan. Here your Red Hat Subscription Management (RHSM) account must have both Red Hat Enterprise Linux entitlement (for subscribing the RHEL OS for the VM) and EAP entitlement. To provision the RHEL-BYOS VM in your subscription, you will have to enable it in the Cloud Access from Red Hat portal and activate Red Hat Gold Images for your subscription. You can enable subscription for cloud access by following the instructions mentioned [here](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) and activate the Red Hat Gold Images by following the instructions mentioned [here](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-azure-access). Once your Azure subscription is enabled, please follow this [link](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/redhat/byos) to accept the Marketplace terms for RHEL-BYOS image from your Azure subscription.
+If you have a RHEL OS license you can deploy the VM using BYOS (Bring-Your-Own-Subscription) plan. Here your Red Hat Subscription Management (RHSM) account must have both Red Hat Enterprise Linux entitlement (for subscribing the RHEL OS for the VM) and EAP entitlement. To provision the RHEL-BYOS VM in your subscription, you will have to enable it in the Cloud Access from Red Hat portal and activate Red Hat Gold Images for your subscription. You can enable subscription for cloud access by following the instructions mentioned [here](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) and activate the Red Hat Gold Images by following the instructions mentioned [here](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-azure-access). Once your Azure subscription is enabled, please follow this [link](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/redhat/byos) to accept the Marketplace terms for RHEL-BYOS image from your Azure subscription.
 
 Note that in both the cases your RHSM account needs EAP entitlement to use the Enterprise Application Platform. You can get an evaluation account for EAP from [here](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation).
 
@@ -71,36 +71,72 @@ Click [here](https://access.redhat.com/products/red-hat-subscription-management)
 
 ## How to consume
 
+You can install JBoss EAP using different methods. You can declare an environment variable named *EAP_HOME* which is used to denote the path to the JBoss EAP installation.
+
+- **ZIP Installation** - The ZIP archive is suitable for installation on all supported operating systems. This method should be used if you wish to extract the instance manually. The ZIP installation provides a default installation of JBoss EAP, and all configuration must be done following installation. Here *EAP_HOME* is the install directory *jboss-eap-7.2* directory where you extracted the ZIP archive.
+
+- **JAR Installer** - The JAR installer can either be run in a console or as a graphical wizard. Both options provide step-by-step instructions for installing and configuring the server instance. This is the preferred method to install JBoss EAP on all supported platforms. Additional setup, including the Quickstarts and Maven repository, is also possible with the installer.
+
+- **RPM Installation** - JBoss EAP can be installed using RPM packages on supported installations of Red Hat Enterprise Linux 6, Red Hat Enterprise Linux 7, and Red Hat Enterprise Linux 8. Here *EAP_HOME* is the install directory which is */opt/rh/eap7/root/usr/share/wildfly/*.
 
 ## ARM template
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-standalone-rhel7" target="_blank"> [JBoss EAP 7.2 on RHEL 7.7 (stand-alone VM)]</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.2 running on RHEL 7.7 VM.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-standalone-rhel7" target="_blank"> JBoss EAP 7.2 on RHEL 7.7 (stand-alone VM)</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.2 running on RHEL 7.7 VM.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-standalone-rhel8" target="_blank"> [JBoss EAP 7.2 on RHEL 8.0 (stand-alone VM)]</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.2 running on RHEL 8.0 VM.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-standalone-rhel8" target="_blank"> JBoss EAP 7.2 on RHEL 8.0 (stand-alone VM)</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.2 running on RHEL 8.0 VM.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss7.3-eap-standalone-rhel8" target="_blank"> [JBoss EAP 7.3 on RHEL 8.0 (stand-alone VM)]</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.3 running on RHEL 8.0 VM.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss7.3-eap-standalone-rhel8" target="_blank"> JBoss EAP 7.3 on RHEL 8.0 (stand-alone VM)</a> - This Azure template deploys a web application named JBoss-EAP on Azure on JBoss EAP 7.3 running on RHEL 8.0 VM.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-multinode-singlevm-rhel7" target="_blank"> [JBoss EAP 7.2 on RHEL 7.7 (multi-node, single VM)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 running on multinode of RHEL 7.7 VM.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-multinode-singlevm-rhel7" target="_blank"> JBoss EAP 7.2 on RHEL 7.7 (multi-node, single VM)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 running on multinode of RHEL 7.7 VM.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-multinode-singlevm-rhel8" target="_blank">[JBoss EAP 7.2 on RHEL 8.0 (multi-node, single VM)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 running on multinode of RHEL 8.0 VM.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-multinode-singlevm-rhel8" target="_blank">JBoss EAP 7.2 on RHEL 8.0 (multi-node, single VM)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 running on multinode of RHEL 8.0 VM.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-multivm-rhel7" target="_blank">[JBoss EAP 7.2 on RHEL 7.7 (clustered, multi-VM)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on 'n' number RHEL 7.7 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-multivm-rhel7" target="_blank">JBoss EAP 7.2 on RHEL 7.7 (clustered, multi-VM)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on 'n' number RHEL 7.7 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-multivm-rhel8" target="_blank">[JBoss EAP 7.2 on RHEL 8.0 (clustered, multi-VM)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on 'n' number of RHEL 8.0 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-multivm-rhel8" target="_blank">JBoss EAP 7.2 on RHEL 8.0 (clustered, multi-VM)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on 'n' number of RHEL 8.0 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap7.3-clustered-multivm-rhel8" target="_blank"> [JBoss EAP 7.3 on RHEL 8.0 (clustered, multi-VM)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.3 cluster running on 'n' number of RHEL 8.0 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap7.3-clustered-multivm-rhel8" target="_blank"> JBoss EAP 7.3 on RHEL 8.0 (clustered, multi-VM)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.3 cluster running on 'n' number of RHEL 8.0 VMs where n is decided by the user and all the VMs are added to the backend pool of a Load Balancer.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-vmss-rhel7" target="_blank"> [JBoss EAP 7.2 on RHEL 7.7 (clustered, VMSS)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on RHEL 7.7 VMSS instances.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-vmss-rhel7" target="_blank"> JBoss EAP 7.2 on RHEL 7.7 (clustered, VMSS)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on RHEL 7.7 VMSS instances.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-vmss-rhel8" target="_blank">[JBoss EAP 7.2 on RHEL 8.0 (clustered, VMSS)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on RHEL 8.0 VMSS instances.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap-clustered-vmss-rhel8" target="_blank">JBoss EAP 7.2 on RHEL 8.0 (clustered, VMSS)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.2 cluster running on RHEL 8.0 VMSS instances.
 
-* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap7.3-clustered-vmss-rhel8" target="_blank">[JBoss EAP 7.3 on RHEL 8.0 (clustered, VMSS)]</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.3 cluster running on RHEL 8.0 VMSS instances.
+* <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/jboss-eap7.3-clustered-vmss-rhel8" target="_blank">JBoss EAP 7.3 on RHEL 8.0 (clustered, VMSS)</a> - This Azure template deploys a web application called eap-session-replication on JBoss EAP 7.3 cluster running on RHEL 8.0 VMSS instances.
+
+You can deploy the template in three following ways :
+
+- Using Powershell : You can use powershell to deploy the template by running the following commands. Please check [here](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-2.8.0) to install and configure Azure PowerShell.
+
+    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new resource group for your deployment`
+
+    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>`
+    
+- Using Azure CLI : You can use Azure CLI to deploy the template by running the following commands. Please check [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to install and configure the Azure Cross-Platform Command-Line Interface.
+
+    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment`
+
+    `az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>`
+
+- Using Azure Portal : You can use Azure portal to deploy the template by going to the GitHub links mentioned above and clicking on **Deploy to Azure** button.
 
 ## Resource Links:
 
+Know more about [JBoss EAP](https://developers.redhat.com/products/eap/download?sc_cid=701f2000000Rm3wAAC&gclid=CjwKCAjwqpP2BRBTEiwAfpiD--4IvtzM8fywpF7LklGMbg2VKhQOvMoihdl22EVPj8RRLDlt8z8QcRoCwOYQAvD_BwE&gclsrc=aw.ds)
 
 ## Next steps
 
+To learn more about JBoss EAP 7.2, visit: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/
+
+To learn more about JBoss EAP 7.2, visit: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/
+
+To learn more about Red Hat Subscription Management (RHSM), visit: https://access.redhat.com/products/red-hat-subscription-management
+
+To learn more about Red Hat on Azure, visit: https://azure.microsoft.com/en-us/overview/linux-on-azure/red-hat/
+
+You can deploy Red Hat Enterprise Linux (RHEL) 7.7 on Azure from [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RedHat.RedHatEnterpriseLinux77-ARM?tab=Overview)
+
+You can deploy Red Hat Enterprise Linux (RHEL) 8.0 on Azure from [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RedHat.RedHatEnterpriseLinux80-ARM?tab=Overview)
+
 If you don't have a Red Hat subscription to install a JBoss EAP, you can go through WildFly instead of JBoss EAP:
 
-*  <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/wildfly-standalone-centos8" target="_blank"> [WildFly 18 on CentOS 8 (stand-alone VM)]</a> - Standalone WildFly 18 with a sample web app on a CentOs 8 Azure VM.
+*  <a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - Standalone WildFly 18 with a sample web app on a CentOS 8 Azure VM.
