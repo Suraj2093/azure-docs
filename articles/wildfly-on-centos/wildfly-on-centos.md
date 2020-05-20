@@ -85,7 +85,7 @@ Once you finish the setup can you start the Standalone service by running the st
 
 ## ARM template
 
-<a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/wildfly-standalone-centos8" target="_blank"> [WildFly 18 on CentOS 8 (stand-alone VM)]</a> - This is a quickstart template that creates a standalone node of WildFly 18.0.1.Final on CentOS 8 VM in your Resource Group (RG) which includes a Public DNS name, Virtual Network and Network Security Group. It also deploys Java Sample Application named JBoss-EAP on Azure on Wildfly.
+<a href="https://github.com/SpektraSystems/redhat-mw-cloud-quickstart/tree/master/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - This is a quickstart template that creates a standalone node of WildFly 18.0.1.Final on CentOS 8 VM in your Resource Group (RG) which includes a Public DNS name, Virtual Network and Network Security Group. It also deploys Java Sample Application named JBoss-EAP on Azure on Wildfly.
 
 You can deploy the template in three following ways :
 
