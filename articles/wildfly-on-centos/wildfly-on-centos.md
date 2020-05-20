@@ -1,6 +1,6 @@
 ---
 title: Quickstart - WildFly on CentOS
-description: Deploy a standalone node of WildFly on CentOS VM
+description: Deploy WildFly on a CentOS VM
 author: SpektraSystems
 ms.author: karler
 ms.topic: quickstart
