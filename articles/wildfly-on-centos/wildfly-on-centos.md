@@ -105,14 +105,7 @@ You can deploy the template in three following ways :
 
 ## Resource Links:
 
-The template creates all the Azure compute resources to run WildFly 18.0.1.Final on top of CentOS 8.0 VM. The following resources are created by the template:
-
-- CentOS 8 VM
-- Public IP 
-- Virtual Network 
-- Network Security Group 
-- WildFly 18.0.1.Final
-- Sample Java application named JBoss-EAP on Azure deployed on WildFly
+Know more about [WildFly](https://wildfly.org/)
 
 ## Next steps
 
