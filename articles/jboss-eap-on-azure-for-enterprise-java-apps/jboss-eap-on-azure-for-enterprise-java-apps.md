@@ -127,7 +127,7 @@ Know more about [JBoss EAP](https://developers.redhat.com/products/eap/download?
 
 To learn more about JBoss EAP 7.2, visit: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/
 
-To learn more about JBoss EAP 7.2, visit: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/
+To learn more about JBoss EAP 7.3, visit: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/
 
 To learn more about Red Hat Subscription Management (RHSM), visit: https://access.redhat.com/products/red-hat-subscription-management
 
